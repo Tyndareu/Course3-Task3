@@ -1,14 +1,19 @@
-import Nav from '../Router/Nav'
-import { Card, DropdownButton, ListGroup } from 'react-bootstrap'
+import NavBar from '../Router/Nav'
+import {
+  Card,
+  DropdownButton,
+  Dropdown,
+  Form,
+  ListGroup
+} from 'react-bootstrap'
 import { FilterMonths, Months, AllDates } from './utils'
-import Dropdown from 'react-bootstrap/Dropdown'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 const variant = 'Primary'
-
 export default function Games () {
   const [monthFilter, setMonthFilter] = useState('All Months')
   const [dayFilter, setDayFilter] = useState('All Days')
+  const [teams, setTeams] = useState([])
   const navigate = useNavigate()
 
   const handleMonthFilter = (e) => {
@@ -18,17 +23,20 @@ export default function Games () {
   const handleDayFilter = (e) => {
     setDayFilter(e.target.id)
   }
+  const Checked = (e) => {
+    if (e.target.checked) {
+      setTeams([...teams, e.target.value])
+    } else {
+      setTeams(teams.filter((x) => x !== e.target.value))
+    }
+  }
+
   return (
     <>
-      <Nav />
+      <NavBar active="games" />
       <div style={{ padding: 20, color: 'white' }}>
         <div className="logoH1">
-          <img
-            style={{ maxHeight: 80 }}
-            id="logo"
-            src="../src/img/nysl_logo.png"
-            alt="Northside Youth Soccer League Logo"
-          />
+          <div className="img" style={{ padding: 40 }} />
           <h1>Northside Youth Soccer League</h1>
         </div>
         <h2 className="mt-3">Fall Schedule</h2>
@@ -55,24 +63,68 @@ export default function Games () {
               </Dropdown.Item>
             ))}
           </DropdownButton>
-
         </div>
-        <ListGroup horizontal style={{ margin: 5 }}>
-            <ListGroup.Item style={{ background: '#0D6EFD', color: 'white' }}>First Game</ListGroup.Item>
-            <ListGroup.Item style={{ background: '#198754', color: 'white' }}>Second Game</ListGroup.Item>
-          </ListGroup>
+
+        <Form style={{ display: 'flex', margin: 10 }}>
+          <Form.Check value="U1" onChange={Checked} type="switch" />
+          <h5 style={{ marginRight: 20 }}>U1</h5>
+          <Form.Check value="U2" onChange={Checked} type="switch" />
+          <h5 style={{ marginRight: 20 }}>U2</h5>
+          <Form.Check value="U3" onChange={Checked} type="switch" />
+          <h5 style={{ marginRight: 20 }}>U3</h5>
+        </Form>
+        <Form style={{ display: 'flex', margin: 10 }}>
+          <Form.Check value="U4" onChange={Checked} type="switch" />
+          <h5 style={{ marginRight: 20 }}>U4</h5>
+          <Form.Check value="U5" onChange={Checked} type="switch" />
+          <h5 style={{ marginRight: 20 }}>U5</h5>
+          <Form.Check value="U6" onChange={Checked} type="switch" />
+          <h5 style={{ marginRight: 20 }}>U6</h5>
+        </Form>
+        <ListGroup horizontal style={{ marginLeft: 11, marginBottom: 10 }}>
+          <ListGroup.Item
+            className="legend"
+            style={{ background: '#0D6EFD', color: 'white' }}
+          >
+            First Game
+          </ListGroup.Item>
+          <ListGroup.Item
+            className="legend"
+            style={{ background: '#198754', color: 'white' }}
+          >
+            Second Game
+          </ListGroup.Item>
+          <ListGroup.Item
+          variant="info"
+            className="legend"
+          >
+            Double click to see details
+          </ListGroup.Item>
+        </ListGroup>
+        {!FilterMonths(monthFilter, dayFilter, teams)[0]
+          ? (
+          <h3 style={{ marginTop: 20 }}>
+            There are currently no results for this search
+          </h3>
+            )
+          : null}
         <div className="events-list">
-          {FilterMonths(monthFilter, dayFilter).map((item) => (
+          {FilterMonths(monthFilter, dayFilter, teams).map((item) => (
             <div key={item.date + item.time + item.location}>
               <Card
                 key={item.date + item.time + item.location}
                 bg={item.variant}
                 text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
-                className="mb-2 card"
+                className="mb-2 cardGames"
                 onDoubleClick={() => navigate('/Game', { state: item })}
               >
-                <Card.Header>
-                  <Card.Title>{item.teams}</Card.Title>
+                <Card.Header
+                  style={{ cursor: 'pointer' }}
+                  onGotPointerCapture={() => navigate('/Game', { state: item })}
+                >
+                  <Card.Title style={{ textAlign: 'center' }}>
+                    {item.teams}
+                  </Card.Title>
                 </Card.Header>
                 <Card.Body>
                   <Card.Title> {item.date.replaceAll('_', '/')} </Card.Title>
