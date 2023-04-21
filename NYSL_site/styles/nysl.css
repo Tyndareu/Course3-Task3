@@ -1,0 +1,246 @@
+/*applies to every page*/
+body{
+  font-family:Arial;
+}
+#header{
+  position:relative;
+  width:100%;
+  height:310px;
+  background-image:url("../img/design1_image1.jpg");
+  background-size:cover;
+  display:block;
+  z-index:-1;
+}
+#title-bar{
+  font-size:110%;
+  height:45px;
+  width:60%;
+  color:black;
+  background-color:white;
+  line-height:45px;
+  position:relative;
+  left:200px;
+  border-bottom:thick inset black;
+  text-align:center;
+}
+#nav-bar{
+  position:absolute;
+  right:0px;
+  top:270px;
+  width:760px;
+}
+#nav-bar a{
+  margin:1%;
+  padding:5px 10px;
+  border: 3px black solid;
+  box-shadow: 5px 5px 0px 0px rgba(0,0,0,.7);
+  text-decoration:none;
+  font-family:"Courier New";
+  font-size:70%;
+}
+.inactive-link{
+  background-color:white;
+  color:black;
+}
+.active-link{
+  background-color:black;
+  color:white;
+}
+h1{
+  color:white;
+  padding:10px 0px 0px 15px;
+  font-size:3.4em;
+  margin:0px;
+  position:relative;
+  font-style:italic;
+  font-family:"Courier New";
+}
+h2{
+  font-size:1em;
+  margin:0px;
+}
+h3{
+  margin:0px;
+  font-size:1.7em;
+  font-family:"Courier New";
+}
+p{
+  margin:0px;
+}
+#logo{
+  height:150px;
+  width:150px;
+  position:absolute;
+  left:25px;
+  top:385px;
+}
+#content{
+  margin-left:200px;
+  margin-top:30px;
+  max-width:900px;
+}
+.contact-variable{
+  
+}
+.about-variable{
+  display:none;
+}
+/*applies to rules page*/
+li{
+  margin-bottom:15px;
+}
+.rules-header{
+  margin-top:25px;
+}
+.rule-introduction{
+  font-weight:bold;
+}
+/*applies to game-info page*/
+#saturday-warning{
+  text-decoration:underline;
+  font-style:italic;
+  margin:15px 0px;
+}
+.first-td{
+  position:relative;
+  left:30px;
+}
+th{
+  text-align:left;
+  font-size:1.15em;
+  text-decoration:underline;
+  width:150px;
+}
+.first-header{
+  width:180px; 
+}
+#game-locations-header{
+  text-decoration:none;
+  font-size:1em;
+}
+.game-locations-name{
+  width:250px;
+  font-weight:bolder;
+}
+.game-locations-description{
+  width:350px;
+}
+.additional-game-info{
+  margin-bottom:20px;
+  width:620px;
+}
+.additional-info-introductions{
+  font-weight:bold; 
+}
+.location-description-row{
+  height:100px;
+}
+#email{
+  display:inline-block;
+  float:right;
+}
+#phone{
+  display:inline-block;
+}
+table{
+  margin-bottom:20px;
+  border-spacing:0px;
+  width:700px;
+}
+/*applies to contact page*/
+#contact-bottom{
+  margin-top:20px;
+}
+/*applies to home page*/
+.date{
+  font-style:italic;
+}
+.description{
+  margin:0px 0px 30px 25px;
+}
+/*applies to registration page*/
+form{
+	width:750px;
+}
+input{
+	border:none;
+	border-bottom:solid black thin;
+	font-size:1.1em;
+}
+.form-box{
+	margin-bottom:15px;
+}
+#player-name-box input{
+	width:25%;
+}
+#address-box input{
+	width:67%;
+}
+#city-zip-box input{
+	width:36%;
+}
+#parent-box input{
+	width:66%;
+}
+#contact-box input{
+	width:26%;
+}
+#permission-box p{
+	font-size:.6em;
+	margin:10px 0px;
+}
+#permission-box-title{
+	font-size:.8em;
+	font-weight:bold;
+	text-decoration:underline;
+}
+#sign-box{
+	font-size:.8em;
+}
+#signature{
+	width:50%;
+}
+#date{
+	width:22%;
+}
+#submit-box{
+	width:100%;
+	margin-bottom:50px;
+}
+#submit-box input{
+	width:25%;
+	position:relative;
+	left:37.5%;
+	border:thin black solid;
+	font-family:"Courier New";
+}
+.form-question{
+	font-weight:bold;
+	margin-bottom:20px;
+}
+.question-clarifier{
+	font-weight:100;
+}
+.elementary-select{
+	font-size:.9em;
+	display:inline-block;
+	margin:20px;
+}
+.elementary-select select{
+	margin-top:20px;
+}
+.form-table td{
+	font-size:.7em;
+	width:50px;
+}
+.form-table th{
+	font-size:.8em;
+}
+.form-table{
+	margin-top:20px;
+	width:48%;
+	display:inline-block;
+}
+.position-table td{
+	width:90px;
+}

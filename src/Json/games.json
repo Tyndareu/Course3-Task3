@@ -1,0 +1,123 @@
+[
+    {
+    "date": "09_01_2023",
+    "teams":"U1 and U4",
+    "location":"AJ Katzenmaier",
+    "time":"9:30 a.m.",
+    "month":"SEPTEMBER"
+},
+{
+    "date": "09_01_2023",
+    "teams":"U3 and U2",
+    "location":"Greenbay",
+    "time":"1:00 p.m.",
+    "month":"SEPTEMBER"
+},
+{
+    "date": "09_08_2023",
+    "teams":"U5 and U6",
+    "location":"Howard A Yeager",
+    "time":"9:30 a.m",
+    "month":"SEPTEMBER"
+},
+{
+    "date": "09_08_2023",
+    "teams":"U6 and U1",
+    "location":"Marjorie P Hart",
+    "time":"1:00 p.m.",
+    "month":"SEPTEMBER"
+},
+{
+    "date": "09_15_2023",
+    "teams":"U2 and U4",
+    "location":"North",
+    "time":"9:30 a.m.",
+    "month":"SEPTEMBER"
+},
+{
+    "date": "09_15_2023",
+    "teams":"U3 and U5",
+    "location":"AJ Katzenmaier",
+    "time":"1:00 p.m.",
+    "month":"SEPTEMBER"
+},
+{
+    "date": "09_22_2023",
+    "teams":"U1 and U3",
+    "location":"South",
+    "time":"9:30 a.m.",
+    "month":"SEPTEMBER"
+},
+{
+    "date": "09_22_2023",
+    "teams":"U2 and U6",
+    "location":"Howard A Yeager",
+    "time":"1:00 p.m.",
+    "month":"SEPTEMBER"
+},
+{
+    "date": "09_29_2023",
+    "teams":"U4 and U5",
+    "location":"Greenbay",
+    "time":"9:30 a.m.",
+    "month":"SEPTEMBER"
+},
+
+{
+    "date": "10_06_2023",
+    "teams":"U2 and U5",
+    "location":"Marjorie P Hart",
+    "time":"9:30 a.m.",
+    "month":"OCTOBER"
+},
+{
+    "date": "10_06_2023",
+    "teams":"U1 and U6",
+    "location":"South",
+    "time":"1:00 p.m.",
+    "month":"OCTOBER"
+},
+{
+    "date": "10_13_2023",
+    "teams":"U3 and U4",
+    "location":"Howard A Yeager",
+    "time":"9:30 a.m.",
+    "month":"OCTOBER"
+},
+{
+    "date": "10_13_2023",
+    "teams":"U5 and U1",
+    "location":"Greenbay",
+    "time":"1:00 p.m.",
+    "month":"OCTOBER"
+},
+{
+    "date": "10_20_2023",
+    "teams":"U6 and U3",
+    "location":"North",
+    "time":"9:30 a.m.",
+    "month":"OCTOBER"
+},
+{
+    "date": "10_20_2023",
+    "teams":"U2 and U4",
+    "location":"Marjorie P Hart",
+    "time":"1:00 p.m.",
+    "month":"OCTOBER"
+},
+{
+    "date": "10_27_2023",
+    "teams":"U3 and U1",
+    "location":"AJ Katzenmaier",
+    "time":"9:30 a.m.",
+    "month":"OCTOBER"
+},
+{
+    "date": "10_27_2023",
+    "teams":"U5 and U6",
+    "location":"Howard A Yeager",
+    "time":"1:00 p.m.",
+    "month":"OCTOBER"
+}
+
+]

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Registration Form</title>
+    <meta charset='utf-8'/>
+    <link rel='stylesheet' type='text/css' href='styles/nysl.css' />
+  </head>
+  <body>
+    <div id='header'>
+      <h1>Northside Youth Soccer League</h1>
+    </div>
+    <div id='title-bar'><h2>Registration Form</h2></div>
+    <img id='logo' src='img/nysl_logo.png' alt='Northside Youth Soccer League Logo' />
+    <div id='nav-bar'>
+      <a class='inactive-link' href='index.html'>Home</a>
+      <a class='inactive-link' href='about.html'>About <span class='about-variable'>NYSL</span></a>
+      <a class='inactive-link' href='contact.html'>Contact</a>
+      <a class='inactive-link' href='rules.html'>Rules and Policies</a>
+      <a class='inactive-link' href='game_info.html'>Game Information</a>
+      <a class='active-link'>Registration Form</a>
+    </div>
+    <div id='content'>
+      <form action='show_data.html' method='GET'>
+        <div class='form-box' id='season-box'>
+          <label>Season: <input type='text' readonly='true' id='season' name='season'></label>
+        </div>
+        <div class='form-box' id='player-name-box'>
+          <label>Player's First Name: <input type='text' name='first_name'></label>
+          <label>Last Name: <input type='text' name='last_name'></label>
+        </div>
+        <div class='form-box' id='address-box'>
+          <label>Street Address: <input type='text' name='address'></label>
+        </div>
+        <div class='form-box' id='city-zip-box'>
+          <label>City: <input type='text' name='city'></label>
+          <label>Zip: <input type='text' name='zip'></label>
+        </div>
+        <div class='form-box' id='birth-gender-box'>
+          <label>Birth Date (mm/dd/yyyy): <input type='text' name='birth'></label>
+          Gender:
+          <label><input type='radio' name='gender' value='female'>Female</label>
+          <label><input type='radio' name='gender' value='male'>Male</label>
+        </div>
+        <div class='form-box' id='grade-box'>
+          Grade:
+          <label><input type='radio' name='grade' value='pre-school'> Pre-School</label>
+          <label><input type='radio' name='grade' value='1st'> 1st</label>
+          <label><input type='radio' name='grade' value='2nd'> 2nd</label>
+          <label><input type='radio' name='grade' value='3rd'> 3rd</label>
+          <label><input type='radio' name='grade' value='4th'> 4th</label>
+          <label><input type='radio' name='grade' value='5th'> 5th</label>
+        </div>
+        <div class='form-box' id='parent-box'>
+          <label>Parent/Guardian: <input type='text' name='parent'></label>
+        </div>
+        <div class='form-box' id='contact-box'>
+          <label>Contact Phone: <input type='text' placeholder='###-###-####' name='phone'></label>
+          <label>Contact Email: <input type='text' name='email'></label>
+        </div>
+        <div class='form-question'>
+          Which elementary schools do you live near?
+          <div id='elementary-box'>
+            <div class='elementary-select'>
+              First Closest School:<br />
+              <select name='first_school'>
+                <option value='null'>Select First School</option>
+                <option value='AJ Katzenmaier'>AJ Katzenmaier</option>
+                <option value='Marjorie P Hart'>Marjorie P Hart</option>
+                <option value='Greenbay'>Greenbay</option>
+                <option value='North Elementary'>North Elementary</option>
+                <option value='Howard A Yeager'>Howard A Yeager</option>
+                <option value='South Elementary'>South Elementary</option>
+              </select>
+            </div>
+            <div class='elementary-select'>
+              Second Closest School:<br />
+              <select name='second_school'>
+                <option value='null'>Select Second School</option>
+                <option value='AJ Katzenmaier'>AJ Katzenmaier</option>
+                <option value='Marjorie P Hart'>Marjorie P Hart</option>
+                <option value='Greenbay'>Greenbay</option>
+                <option value='North Elementary'>North Elementary</option>
+                <option value='Howard A Yeager'>Howard A Yeager</option>
+                <option value='South Elementary'>South Elementary</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class='form-question'>
+          Which position(s) do you normally play?
+          <span class='question-clarifier'>(check all that apply)</span>
+          <table class='position-table form-table'>
+            <tr>
+              <td><label><input type='checkbox' name='normal-position' value='forward'>Forward</label></td>
+              <td><label><input type='checkbox' name='normal-position' value='midfield'>Midfield</label></td>
+            </tr>
+            <tr>
+              <td><label><input type='checkbox' name='normal-position' value='defense'>Defense</label></td>
+              <td><label><input type='checkbox' name='normal-position' value='goalkeeper'>Goalkeeper</label></td>
+            </tr>
+          </table>
+        </div>
+        <div class='form-question'>
+          Which position(s) do you want to play?
+          <span class='question-clarifier'>(check all that apply)</span>
+          <table class='position-table form-table'>
+            <tr>
+              <td><label><input type='checkbox' name='wanted-position' value='forward'>Forward</label></td>
+              <td><label><input type='checkbox' name='wanted-position' value='midfield'>Midfield</label></td>
+            </tr>
+            <tr>
+              <td><label><input type='checkbox' name='wanted-position' value='defense'>Defense</label></td>
+              <td><label><input type='checkbox' name='wanted-position' value='goalkeeper'>Goalkeeper</label></td>
+            </tr>
+          </table>
+        </div>
+        <div class='form-question'>
+          Already Have a Uniform:
+          <input type='checkbox' name='has_uniform'>
+          <div id='uniform-box'>
+            <table class='form-table'>
+              <tr>
+                <th>Jersey Size:</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td><label><input class='uniform-sizes' type='radio' name='jersey-size' value='youth-small'>Youth Small</label></td>
+                <td><label><input class='uniform-sizes' type='radio' name='jersey-size' value='medium'>Medium</label></td>
+              </tr>
+              <tr>
+                <td><label><input class='uniform-sizes' type='radio' name='jersey-size' value='youth-medium'>Youth Medium</label></td>
+                <td><label><input class='uniform-sizes' type='radio' name='jersey-size' value='large'>Large</label></td>
+              </tr>
+              <tr>
+                <td><label><input class='uniform-sizes' type='radio' name='jersey-size' value='youth-large'>Youth Large</label></td>
+                <td><label><input class='uniform-sizes' type='radio' name='jersey-size' value='extra-large'>Extra-Large</label></td>
+              </tr>
+              <tr>
+                <td><label><input class='uniform-sizes' type='radio' name='jersey-size' value='small'>Small</label></td>
+                <td></td>
+              </tr>
+            </table>
+            <table class='form-table'>
+              <tr>
+                <th>Shorts Size:</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td><label><input class='uniform-sizes' type='radio' name='shorts-size' value='youth-small'>Youth Small</label></td>
+                <td><label><input class='uniform-sizes' type='radio' name='shorts-size' value='medium'>Medium</label></td>
+              </tr>
+              <tr>
+                <td><label><input class='uniform-sizes' type='radio' name='shorts-size' value='youth-medium'>Youth Medium</label></td>
+                <td><label><input class='uniform-sizes' type='radio' name='shorts-size' value='large'>Large</label></td>
+              </tr>
+              <tr>
+                <td><label><input class='uniform-sizes' type='radio' name='shorts-size' value='youth-large'>Youth Large</label></td>
+                <td><label><input class='uniform-sizes' type='radio' name='shorts-size' value='extra-large'>Extra-Large</label></td>
+              </tr>
+              <tr>
+                <td><label><input class='uniform-sizes' type='radio' name='shorts-size' value='small'>Small</label></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div id='permission-box'>
+          <div id='permission-box-title'>Permission to Play</div>
+          <p>I, the parent or guardian of the minor registrant, agree that the registrant and I will abide by all the rules of the Northside Youth
+            Soccer League (NYSL). In recognizing the possibility of physical injury associated with soccer and in consideration for the “League”
+            accepting the registrant for its soccer programs and activities, I hereby release, discharge, and/or otherwise indemnify NYSL, their
+            employees and associated personnel and volunteers, including the facilities used for practices and games, against any claim by or
+            on behalf of the registrant as a result of the registrant’s participation in the program and/or being transported to or from NYSL
+            sponsored activities, which transportation.
+          </p>
+          <p>By entering your name below, I hereby agree and authorize the above. In addition, by signing below, I also acknowledge that I have read the
+            cancellation policy and agree to its terms. 
+          </p>
+          <div id='sign-box' class='form-box'>
+            <label>Parent/Guardian Signature: <input id='signature' name='signature'></label>
+            <label>Date: <input id='date' name='date'></label>
+          </div>
+        </div>
+        <div id='submit-box'>
+          <input id='submit' type='submit'>
+        </div>
+      </form>
+    </div>
+    <script type="text/javascript" src="validate_registration.js"></script>
+  </body>
+</html>
