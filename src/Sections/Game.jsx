@@ -2,19 +2,23 @@ import NavBar from '../Router/Nav'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
 import { Location } from './utils'
+import { auth } from '../components/firebase/api'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { Messages } from './Messages/Messages'
 
 export default function Game () {
   const { state: item } = useLocation()
   const navigate = useNavigate()
+  const [user] = useAuthState(auth)
 
   return (
     <>
-      <NavBar active='games'/>
+      <NavBar active="games" />
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Card
           style={{
             flex: 1,
-            marginTop: 80,
+            marginTop: 10,
             marginLeft: 10,
             marginRight: 10,
             maxWidth: 600,
@@ -38,15 +42,16 @@ export default function Game () {
           </Card.Body>
         </Card>
       </div>
+          {user ? <Messages game={item} /> : null}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Button
-        variant={item.variant.toLowerCase()}
+          variant={item.variant.toLowerCase()}
           style={{
-            marginTop: 50,
+            marginTop: 10,
             marginBottom: 50,
-            width: 100,
-            textAlign: 'center'
+            width: 100
           }}
+          className="legend"
           onClick={() => {
             navigate('/Games')
           }}

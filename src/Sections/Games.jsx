@@ -81,7 +81,7 @@ export default function Games () {
           <Form.Check value="U6" onChange={Checked} type="switch" />
           <h5 style={{ marginRight: 20 }}>U6</h5>
         </Form>
-        <ListGroup horizontal style={{ marginLeft: 11, marginBottom: 10 }}>
+        <ListGroup horizontal style={{ marginBottom: 10 }}>
           <ListGroup.Item
             className="legend"
             style={{ background: '#0D6EFD', color: 'white' }}
@@ -121,6 +121,7 @@ export default function Games () {
                 <Card.Header
                   style={{ cursor: 'pointer' }}
                   onGotPointerCapture={() => navigate('/Game', { state: item })}
+                  onClick={() => navigate('/Game', { state: item })}
                 >
                   <Card.Title style={{ textAlign: 'center' }}>
                     {item.teams}

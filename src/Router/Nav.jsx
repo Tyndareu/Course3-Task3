@@ -1,15 +1,15 @@
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import { SignInButton } from '../components/SingInButton'
+import { SignOutButton } from '../components/SingOutButton'
+import { auth } from '../components/firebase/api'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 function NavBar ({ active }) {
+  const [user] = useAuthState(auth)
   return (
     <Navbar bg="primary" variant="dark">
-      <img
-        style={{ maxHeight: 40, marginLeft: 20 }}
-        id="logo"
-        src="../src/img/nysl_logo.png"
-        alt="Northside Youth Soccer League Logo"
-      />
+      <div className="img" style={{ padding: 20, marginLeft: 15 }} />
       <Nav className="me-auto">
         <Nav.Link
           className={active === 'inicio' ? 'active' : null}
@@ -25,6 +25,7 @@ function NavBar ({ active }) {
           Games
         </Nav.Link>
       </Nav>
+      {user ? <SignOutButton /> : <SignInButton />}
     </Navbar>
   )
 }

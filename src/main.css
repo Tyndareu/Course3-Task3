@@ -5,6 +5,7 @@ background: linear-gradient(220.55deg, #5D85A6 0%, #0E2C5E 100%);
 #root{
   max-width: 1200px;
   margin: auto;
+  min-height: 950px;
 }
 body h1 {
   font-size: 2rem;
@@ -48,3 +49,10 @@ body h2 {
     height:350px;
     border:0px;
   }
+
+.comments {
+  margin: auto;
+  padding: 10px;
+  margin-top: 20px;
+  max-width: 600px;
+}
