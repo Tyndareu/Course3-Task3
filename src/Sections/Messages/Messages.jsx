@@ -34,9 +34,9 @@ export const Messages = ({ game }) => {
     await newComment(commentBD)
     const addNewComment = messages
     addNewComment.push(commentBD)
-    setMessages(addNewComment)
+    readBD()
     setMessage('')
-    toast.success('Comment Send!', {
+    toast.success('Mesagge Send!', {
       position: 'top-center',
       autoClose: 2000,
       hideProgressBar: false,
@@ -64,10 +64,11 @@ export const Messages = ({ game }) => {
         <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Button
           onClick={handleSubmit}
-          className="legend mb-3"
+          className="legend mb-3 mt-1"
           variant={game.variant}
           type="submit"
           value="Submit"
+          disabled={message === ''}
         >
           Submit
         </Button>

@@ -118,11 +118,7 @@ export default function Games () {
                 className="mb-2 cardGames"
                 onDoubleClick={() => navigate('/Game', { state: item })}
               >
-                <Card.Header
-                  style={{ cursor: 'pointer' }}
-                  onGotPointerCapture={() => navigate('/Game', { state: item })}
-                  onClick={() => navigate('/Game', { state: item })}
-                >
+                <Card.Header>
                   <Card.Title style={{ textAlign: 'center' }}>
                     {item.teams}
                   </Card.Title>

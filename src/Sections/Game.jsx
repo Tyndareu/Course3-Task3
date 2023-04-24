@@ -47,7 +47,7 @@ export default function Game () {
         <Button
           variant={item.variant.toLowerCase()}
           style={{
-            marginTop: 10,
+            marginTop: 20,
             marginBottom: 50,
             width: 100
           }}
