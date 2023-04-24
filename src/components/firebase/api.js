@@ -13,7 +13,11 @@ export const setData = (id, updatedFields) =>
 export const newComment = (newComment) =>
   addDoc(collection(db, collectionName), newComment)
 
-export const firebaseSignOut = () => signOut(auth)
+export const firebaseSignOut = () => {
+  if (window.confirm('Do you really want to LogOut?')) {
+    signOut(auth)
+  }
+}
 export const signInWithGoogle = () => {
   signInWithPopup(getAuth(app), new GoogleAuthProvider())
 }
