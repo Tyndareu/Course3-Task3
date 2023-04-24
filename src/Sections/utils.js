@@ -121,3 +121,5 @@ export const Location = (item) => {
   }
   return location
 }
+
+export const isMobile = window.innerWidth <= 500

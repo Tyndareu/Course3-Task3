@@ -17,7 +17,6 @@ export const CommentList = ({ messages, user }) => {
         <Button
           onClick={() => {
             deleteComment(id)
-            window.location.reload(true)
           }
           }
           variant="danger"

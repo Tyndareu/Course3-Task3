@@ -23,8 +23,13 @@ export const signInWithGoogle = () => {
 }
 export const auth = getAuth(app)
 
-export const deleteComment = (id) => {
+export const deleteComment = async (id) => {
   if (window.confirm('Do you really want to delete?')) {
-    deleteDoc(doc(db, collectionName, id))
+    try {
+      await deleteDoc(doc(db, collectionName, id))
+      window.location.reload(true)
+    } catch (err) {
+      alert(err)
+    }
   }
 }

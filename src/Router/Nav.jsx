@@ -4,6 +4,7 @@ import { SignInButton } from '../components/SingInButton'
 import { SignOutButton } from '../components/SingOutButton'
 import { auth } from '../components/firebase/api'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { isMobile } from '../Sections/utils'
 
 function NavBar ({ active }) {
   const [user] = useAuthState(auth)
@@ -13,7 +14,7 @@ function NavBar ({ active }) {
       <Nav className="me-auto">
         <Nav.Link
           className={active === 'inicio' ? 'active' : null}
-          style={{ marginLeft: 20 }}
+          style={isMobile ? { marginLeft: 10 } : { marginLeft: 20, fontSize: '1.5rem' }}
           href="/"
         >
           Home
@@ -21,10 +22,12 @@ function NavBar ({ active }) {
         <Nav.Link
           className={active === 'games' ? 'active' : null}
           href="/Games"
+          style={isMobile ? null : { fontSize: '1.5rem' }}
         >
           Games
         </Nav.Link>
       </Nav>
+      {user && !isMobile ? <h5 style={{ marginRight: 5, color: 'white' }}>Wellcome: {user.displayName}</h5> : null}
       {user ? <SignOutButton /> : <SignInButton />}
     </Navbar>
   )
