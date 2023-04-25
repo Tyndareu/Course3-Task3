@@ -1,6 +1,6 @@
 import { Form, Button, Card } from 'react-bootstrap'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth, newComment, getComments } from '../../components/firebase/api'
+import { auth, newOneDoc, getAllDocs } from '../../components/firebase/api'
 import { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -13,7 +13,7 @@ export const Messages = ({ game }) => {
 
   const readBD = async () => {
     const docs = []
-    const querySnapshot = await getComments()
+    const querySnapshot = await getAllDocs()
     querySnapshot.forEach((doc) => {
       docs.push({ ...doc.data(), id: doc.id })
     })
@@ -29,9 +29,11 @@ export const Messages = ({ game }) => {
       date: new Date().toUTCString(),
       idgame: game.id,
       iduser: user.uid,
-      commentText: message
+      commentText: message,
+      mail: user.email,
+      name: user.displayName
     }
-    await newComment(commentBD)
+    await newOneDoc(commentBD)
     const addNewComment = messages
     addNewComment.push(commentBD)
     readBD()
@@ -43,7 +45,8 @@ export const Messages = ({ game }) => {
       closeOnClick: true,
       draggable: true,
       progress: undefined,
-      theme: 'dark'
+      theme: 'dark',
+      photos: []
     })
   }
   return (

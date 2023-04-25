@@ -90,7 +90,6 @@ export const Location = (item) => {
     description: '2101 N. Fremont St., Chicago, IL 60614',
     iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.749141506375!2d-87.65354528455761!3d41.91975117921891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd3196fb41dc7%3A0x970be7f7d6336df5!2s2101+N+Fremont+St%2C+Chicago%2C+IL+60614!5e0!3m2!1sen!2sus!4v1498666373464'
   }
-
   const D = {
     description: 'Not Difine',
     iframe: 'Not Difine'

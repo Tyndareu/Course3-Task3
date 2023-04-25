@@ -42,7 +42,27 @@ export default function Game () {
           </Card.Body>
         </Card>
       </div>
-          {user ? <Messages game={item} /> : null}
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        {user
+          ? (
+          <Button
+            variant={item.variant.toLowerCase()}
+            style={{
+              marginTop: 20,
+              width: 100
+            }}
+            className="legend"
+            onClick={() => {
+              navigate('/Photos?id= item.id', { state: item })
+            }}
+          >
+            Photos
+          </Button>
+            )
+          : null}
+      </div>
+      {user ? <Messages game={item} /> : null}
+
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Button
           variant={item.variant.toLowerCase()}

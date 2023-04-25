@@ -1,22 +1,34 @@
 import { Card, Button } from 'react-bootstrap'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth, deleteComment } from '../../components/firebase/api'
+import { auth, deleteOneDoc } from '../../components/firebase/api'
+import { useState } from 'react'
 
-export const CommentList = ({ messages, user }) => {
+export const CommentList = ({ messages }) => {
+  const [allMessages, setAllMessages] = useState(messages)
   const [userLogin] = useAuthState(auth)
-  return messages.map(({ date, commentText, id }) => (
+
+  const deleteMessage = (id) => {
+    for (let index = 0; index < allMessages.length; index++) {
+      if (messages[index].id === id) {
+        messages.splice(index, 1)
+      }
+    }
+    setAllMessages(messages)
+  }
+  return allMessages.map(({ name, mail, date, commentText, id }) => (
     <Card bg="light" className="mt-1" key={date}>
-      <Card.Header>From: {user.displayName}</Card.Header>
+      <Card.Header>From: {name}</Card.Header>
       <Card.Body>
         <Card.Text> {commentText} </Card.Text>
       </Card.Body>
       <Card.Header>Date: {date}</Card.Header>
-      {userLogin.displayName !== user.displayName
+      {userLogin.email !== mail
         ? null
         : (
         <Button
           onClick={() => {
-            deleteComment(id)
+            deleteOneDoc(id)
+            deleteMessage(id)
           }
           }
           variant="danger"
