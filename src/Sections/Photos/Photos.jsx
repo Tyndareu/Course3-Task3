@@ -15,13 +15,14 @@ import { v4 } from 'uuid'
 let newUrls = []
 
 const URLs = () => {
+  const navigate = useNavigate()
   const [images, setImages] = useState([])
   const [progress, setProgress] = useState([])
   const [docs, setDocs] = useState([])
-  const navigate = useNavigate()
   const aRef = useRef(null)
   const [disableButton, setDisableButton] = useState([true])
   const { state: item } = useLocation()
+  const [img, setImg] = useState([])
 
   const readBD = async () => {
     const docs = []
@@ -29,9 +30,11 @@ const URLs = () => {
     querySnapshot.forEach((doc) => {
       docs.push({ ...doc.data(), id: doc.id })
     })
-    setDocs(docs.filter((x) => x.idgame === item.id))
-    if (docs.filter((x) => x.idgame === item.id) !== 0) {
-      newUrls = docs[0].photos
+    const filterDocs = docs.filter((x) => x.idgame === item.id)
+    setDocs(filterDocs)
+    if (filterDocs.length !== 0) {
+      newUrls = filterDocs[0].photos
+      setImg(filterDocs[0].photos)
     }
   }
   useEffect(() => {
@@ -39,7 +42,6 @@ const URLs = () => {
   }, [])
 
   const writeURLDb = async () => {
-    console.log(newUrls)
     if (docs.length === 0) {
       const newOneDoc = {
         idgame: item.id,
@@ -53,6 +55,7 @@ const URLs = () => {
         photos: newUrls
       }
       await setURLs(docs[0].id, photosURLDB)
+      readBD()
     }
   }
   const handleFileChange = (e) => {
@@ -96,21 +99,24 @@ const URLs = () => {
       )
     }
   }
+
   return (
     <>
       <Nav />
+      {img.map((url) => (
+         <div href={url} key={url}><img src={url} alt='Photos from game'></img></div>
+
+      ))}
       <div
         className="mt-3"
         style={{ display: 'flex', flexWrap: 'wrap', gap: 5, margin: 5 }}
       >
         <Form.Group controlId="formFile">
-          <Form.Control
-            ref={aRef}
-            onChange={handleFileChange}
-            type="file"
-          />
+          <Form.Control ref={aRef} onChange={handleFileChange} type="file" />
         </Form.Group>
-        <Button disabled={disableButton} onClick={handleUpload}>Upload File</Button>
+        <Button disabled={disableButton} onClick={handleUpload}>
+          Upload File
+        </Button>
       </div>
       {progress.map((progress, i) => (
         <h5 style={{ color: 'white', margin: 10, maxWidth: 285 }} key={i}>
