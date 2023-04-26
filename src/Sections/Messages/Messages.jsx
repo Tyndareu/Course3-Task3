@@ -36,7 +36,6 @@ export const Messages = ({ game }) => {
     await newOneDoc(commentBD)
     const addNewComment = messages
     addNewComment.push(commentBD)
-    readBD()
     setMessage('')
     toast.success('Mesagge Send!', {
       position: 'top-center',

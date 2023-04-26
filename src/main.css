@@ -29,14 +29,10 @@ body h2 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(5rem, 11rem));
   }
-  .card {
+  .card,  .legend {
     box-shadow: 10px 10px 30px black;
   }
-  
-  .legend {
-    box-shadow: 10px 10px 30px black;
-  }
-  
+
   .cardGames {
     max-width: 150px;
   }
@@ -55,4 +51,15 @@ body h2 {
   padding: 10px;
   margin-top: 20px;
   max-width: 600px;
+}
+
+.galeria{
+  display: flex;
+  flex-wrap: wrap;
+}
+.galeria img{
+  margin:2px;
+  border: 2px solid #0D6EFD;
+  border-radius: 8px;
+  width: 180px;
 }

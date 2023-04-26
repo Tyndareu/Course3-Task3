@@ -103,10 +103,12 @@ const URLs = () => {
   return (
     <>
       <Nav />
+      <div className='galeria mt-3'>
       {img.map((url) => (
-         <div href={url} key={url}><img src={url} alt='Photos from game'></img></div>
+         <a target="blank" href={url} key={url}><img src={url} alt='Photos from game'></img></a>
 
       ))}
+      </div>
       <div
         className="mt-3"
         style={{ display: 'flex', flexWrap: 'wrap', gap: 5, margin: 5 }}
@@ -124,7 +126,7 @@ const URLs = () => {
           <ProgressBar style={{ marginTop: 5 }} variant="info" now={progress} />
         </h5>
       ))}
-      <Button onClick={() => navigate(-1)}>Go Back</Button>
+      <Button style={{ marginLeft: 5 }} onClick={() => navigate(-1)}>Go Back</Button>
     </>
   )
 }
