@@ -14,8 +14,9 @@ export const CommentList = ({ messages }) => {
       }
     }
     setAllMessages(messages)
+    window.location.reload(true)
   }
-  return allMessages.map(({ name, mail, date, commentText, id }) => (
+  return allMessages.map(({ name, mail, date, commentText, id, isNew }) => (
     <Card bg="light" className="mt-1" key={date}>
       <Card.Header>From: {name}</Card.Header>
       <Card.Body>
@@ -26,15 +27,15 @@ export const CommentList = ({ messages }) => {
         ? null
         : (
         <Button
+        disabled={isNew}
           onClick={() => {
             deleteOneDoc(id)
             deleteMessage(id)
-          }
-          }
+          }}
           variant="danger"
-          style={{ margin: 'auto', marginTop: 2, marginBottom: 2, width: 100 }}
+          style={{ margin: 'auto', marginTop: 2, marginBottom: 2, width: 140 }}
         >
-          Delete
+          {isNew ? 'Reload for delete' : 'Delete' }
         </Button>
           )}
     </Card>

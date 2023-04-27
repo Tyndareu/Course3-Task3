@@ -17,7 +17,9 @@ export const Messages = ({ game }) => {
     querySnapshot.forEach((doc) => {
       docs.push({ ...doc.data(), id: doc.id })
     })
-    setMessages(docs.filter((x) => x.idgame === game.id).sort((x, y) => x.date - y.date))
+    setMessages(
+      docs.filter((x) => x.idgame === game.id).sort((x, y) => x.date - y.date)
+    )
   }
   useEffect(() => {
     readBD()
@@ -34,8 +36,17 @@ export const Messages = ({ game }) => {
       name: user.displayName
     }
     await newOneDoc(commentBD)
+    const commentBDisNew = {
+      date: new Date().toUTCString(),
+      idgame: game.id,
+      iduser: user.uid,
+      commentText: message,
+      mail: user.email,
+      name: user.displayName,
+      isNew: true
+    }
     const addNewComment = messages
-    addNewComment.push(commentBD)
+    addNewComment.push(commentBDisNew)
     setMessage('')
     toast.success('Mesagge Send!', {
       position: 'top-center',
@@ -64,19 +75,28 @@ export const Messages = ({ game }) => {
           />
         </Form.Group>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Button
-          onClick={handleSubmit}
-          className="legend mb-3 mt-1"
-          variant={game.variant}
-          type="submit"
-          value="Submit"
-          disabled={message === ''}
-        >
-          Submit
-        </Button>
+          <Button
+            onClick={handleSubmit}
+            className="legend mb-3 mt-1"
+            variant={game.variant}
+            type="submit"
+            value="Submit"
+            disabled={message === ''}
+          >
+            Submit
+          </Button>
         </div>
       </Form>
-            {messages.length === 0 ? <Card bg="light"> <Card.Header>No messages Yet! Be the first</Card.Header> </Card> : <CommentList messages={messages} user={user} /> }
+      {messages.length === 0
+        ? (
+        <Card bg="light">
+          {' '}
+          <Card.Header>No messages Yet! Be the first</Card.Header>{' '}
+        </Card>
+          )
+        : (
+        <CommentList messages={messages} user={user} />
+          )}
       <ToastContainer />
     </div>
   )

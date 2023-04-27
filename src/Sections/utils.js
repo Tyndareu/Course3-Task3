@@ -27,7 +27,7 @@ const FilterTeam = (games, teams) => {
 export const FilterMonths = (filterMonth, dayFilter, teams) => {
   if (filterMonth !== 'All Months') {
     if (dayFilter !== 'All Days') {
-      return (FilterTeam(games, teams).filter((x) => x.date.replaceAll('_', '/') === dayFilter))
+      return (FilterTeam(games, teams).filter((x) => x.date.substring(3, 7) === dayFilter))
     }
     return (FilterTeam(games, teams).filter((x) => x.month.toLowerCase() === filterMonth.toLowerCase()))
   } else {
@@ -42,7 +42,7 @@ export const AllDates = (monthfilter) => {
   const allDates = ['All Days']
   if (monthfilter !== 'All Months') {
     games.filter((x) => x.month.toLowerCase() === monthfilter.toLowerCase()).forEach(element => {
-      allDates.push(element.date.replaceAll('_', '/'))
+      allDates.push(element.date.substring(3, 7))
     })
   } else {
     games.forEach(element => {
