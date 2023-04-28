@@ -1,63 +1,40 @@
 import Nav from '../../Router/Nav'
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import {
-  storage,
-  getAllURLs,
-  newOneURL,
-  setURLs
-} from '../../components/firebase/api'
+  ref,
+  uploadBytesResumable,
+  listAll,
+  getDownloadURL
+} from 'firebase/storage'
+import { storage } from '../../components/firebase/api'
 import { useState, useEffect, useRef } from 'react'
 import Form from 'react-bootstrap/Form'
 import { Button } from 'react-bootstrap'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { v4 } from 'uuid'
-let newUrls = []
 
 const URLs = () => {
   const navigate = useNavigate()
   const [images, setImages] = useState([])
   const [progress, setProgress] = useState([])
-  const [docs, setDocs] = useState([])
   const aRef = useRef(null)
   const [disableButton, setDisableButton] = useState([true])
   const { state: item } = useLocation()
-  const [img, setImg] = useState([])
+  const [imageList, setImageList] = useState([])
+  const imagesListFolderRef = ref(storage, item.id.toString())
+  const [reload, setReload] = useState(false)
 
-  const readBD = async () => {
-    const docs = []
-    const querySnapshot = await getAllURLs()
-    querySnapshot.forEach((doc) => {
-      docs.push({ ...doc.data(), id: doc.id })
-    })
-    const filterDocs = docs.filter((x) => x.idgame === item.id)
-    setDocs(filterDocs)
-    if (filterDocs.length !== 0) {
-      newUrls = filterDocs[0].photos
-      setImg(filterDocs[0].photos)
-    }
-  }
   useEffect(() => {
-    readBD()
-  }, [])
+    setImageList([])
+    listAll(imagesListFolderRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          return setImageList((prev) => [...prev, url])
+        })
+      })
+    })
+  }, [reload])
 
-  const writeURLDb = async () => {
-    if (docs.length === 0) {
-      const newOneDoc = {
-        idgame: item.id,
-        photos: newUrls
-      }
-      await newOneURL(newOneDoc)
-      readBD()
-    } else {
-      const photosURLDB = {
-        idgame: item.id,
-        photos: newUrls
-      }
-      await setURLs(docs[0].id, photosURLDB)
-      readBD()
-    }
-  }
   const handleFileChange = (e) => {
     const files = e.target.files
     const newImages = []
@@ -90,12 +67,7 @@ const URLs = () => {
         (error) => {
           console.log(error)
         },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            newUrls.push(downloadURL)
-            writeURLDb()
-          })
-        }
+        () => { setReload(!reload) }
       )
     }
   }
@@ -103,18 +75,19 @@ const URLs = () => {
   return (
     <>
       <Nav />
-      <div className='galeria mt-3'>
-      {img.map((url) => (
-         <a target="blank" href={url} key={url}><img src={url} alt='Photos from game'></img></a>
-
-      ))}
+      <div className="galeria mt-3">
+        {imageList.map((url) => (
+          <a target="blank" href={url} key={url}>
+            <img src={url} alt="Photos from game"></img>
+          </a>
+        ))}
       </div>
       <div
         className="mt-3"
         style={{ display: 'flex', flexWrap: 'wrap', gap: 5, margin: 5 }}
       >
         <Form.Group controlId="formFile">
-          <Form.Control ref={aRef} onChange={handleFileChange} type="file" />
+          <Form.Control ref={aRef} multiple onChange={handleFileChange} type="file" />
         </Form.Group>
         <Button disabled={disableButton} onClick={handleUpload}>
           Upload File
@@ -126,7 +99,9 @@ const URLs = () => {
           <ProgressBar style={{ marginTop: 5 }} variant="info" now={progress} />
         </h5>
       ))}
-      <Button style={{ marginLeft: 5 }} onClick={() => navigate(-1)}>Go Back</Button>
+      <Button style={{ marginLeft: 5 }} onClick={() => navigate(-1)}>
+        Go Back
+      </Button>
     </>
   )
 }
